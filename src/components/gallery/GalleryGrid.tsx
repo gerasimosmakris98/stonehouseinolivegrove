@@ -5,13 +5,13 @@ import GalleryImageCard from './GalleryImageCard';
 
 const GalleryGrid = () => {
   const { t } = useLanguage();
-  const { filteredImages } = useGallery();
+  const { images } = useGallery();
 
-  if (filteredImages.length === 0) {
+  if (images.length === 0) {
     return (
       <div className="text-center py-12">
         <p className="text-gray-500">
-          {t('No images found in this category.', 'Δεν βρέθηκαν εικόνες σε αυτήν την κατηγορία.')}
+          {t('No images found.', 'Δεν βρέθηκαν εικόνες.')}
         </p>
       </div>
     );
@@ -19,7 +19,7 @@ const GalleryGrid = () => {
   
   return (
     <div className="gallery-grid grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-6">
-      {filteredImages.map((img, index) => (
+      {images.map((img, index) => (
         <GalleryImageCard 
           key={img.id} 
           image={img} 

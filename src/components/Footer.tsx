@@ -9,10 +9,10 @@ const Footer = () => {
 
   return (
     <footer className="relative pt-20 pb-8 overflow-hidden" id="contact">
-      {/* Background with overlay */}
+      {/* Background with overlay - Updated with new image */}
       <div className="absolute inset-0 bg-gray-900">
-        <div className="absolute inset-0 bg-[url('/lovable-uploads/4ee67a01-4242-45de-846b-c078e1a3ac18.png')] bg-cover bg-center opacity-25"></div>
-        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-gray-900/90 to-gray-900"></div>
+        <div className="absolute inset-0 bg-[url('/lovable-uploads/e5f76f68-7bfb-416a-b9ce-bf42a250cf6f.png')] bg-cover bg-center opacity-40"></div>
+        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-gray-900/80 to-gray-900"></div>
       </div>
       
       <div className="container mx-auto px-4 max-w-6xl relative z-10">

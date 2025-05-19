@@ -1,11 +1,11 @@
+
 import { useGallery } from './GalleryContext';
 import GalleryGrid from './GalleryGrid';
 import GalleryModal from './GalleryModal';
 import GalleryPreloader from './GalleryPreloader';
-import GalleryFilters from './GalleryFilters';
 import GlassCard from '../GlassCard';
-import CircularImage from '../CircularImage';
 import { useLanguage } from '../LanguageContext';
+
 const GalleryContainer = () => {
   const {
     t
@@ -14,6 +14,7 @@ const GalleryContainer = () => {
     loading,
     imagesLoaded
   } = useGallery();
+  
   return <section id="gallery" className="py-16 px-4 md:py-24 animated-section">
       <div className="container mx-auto max-w-7xl">
         <div className="flex flex-col md:flex-row items-start md:items-center justify-between mb-10 gap-6">
@@ -25,13 +26,9 @@ const GalleryContainer = () => {
               {t("Explore our beautiful villa through these carefully selected images. Experience the comfort and elegance of our interior spaces and the natural beauty surrounding the property.", "Εξερευνήστε την όμορφη βίλα μας μέσα από αυτές τις προσεκτικά επιλεγμένες εικόνες. Βιώστε την άνεση και την κομψότητα των εσωτερικών χώρων και τη φυσική ομορφιά που περιβάλλει το ακίνητο.")}
             </p>
           </div>
-          
         </div>
         
-        {/* Add back filters */}
-        <GalleryFilters className="mb-6" />
-        
-        {/* Gallery content */}
+        {/* Gallery content - Categories removed */}
         <GlassCard variant="default" className="mb-10">
           {loading && !imagesLoaded ? <GalleryPreloader /> : <GalleryGrid />}
         </GlassCard>
@@ -40,4 +37,5 @@ const GalleryContainer = () => {
       </div>
     </section>;
 };
+
 export default GalleryContainer;
