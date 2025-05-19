@@ -1,5 +1,4 @@
-
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useLanguage } from './LanguageContext';
 import { X } from 'lucide-react';
 import { propertyData } from '../data/propertyData';
@@ -55,23 +54,22 @@ const Gallery = () => {
   };
 
   // Preload all gallery images for smoother experience
-  const preloadImages = () => {
-    images.forEach(src => {
-      const img = new Image();
-      img.src = src;
-      img.onload = handleImageLoad;
-    });
-  };
-
-  // Call preload on component mount
-  useState(() => {
+  useEffect(() => {
+    const preloadImages = () => {
+      images.forEach(src => {
+        const img = new Image();
+        img.src = src;
+        img.onload = handleImageLoad;
+      });
+    };
+    
     preloadImages();
-  });
+  }, []);
 
   return (
     <section className="py-16 px-4 bg-gray-50" id="gallery">
       <div className="container mx-auto max-w-6xl">
-        <div className="text-center mb-12 animated-section" data-aos="fade-up">
+        <div className="text-center mb-12">
           <h2 className="text-3xl font-bold mb-3 text-gray-800">
             {t(gallery.title.en, gallery.title.el)}
           </h2>
@@ -90,7 +88,7 @@ const Gallery = () => {
           </div>
         )}
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 animated-section" data-aos="zoom-in">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
           {images.map((img, index) => (
             <div 
               key={index}

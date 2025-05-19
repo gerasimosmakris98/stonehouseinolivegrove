@@ -115,10 +115,10 @@ export default {
 			animation: {
 				'accordion-down': 'accordion-down 0.2s ease-out',
 				'accordion-up': 'accordion-up 0.2s ease-out',
-				'fade-in': 'fade-in 0.5s ease-out',
-				'fade-out': 'fade-out 0.5s ease-out',
-				'slide-up': 'slide-up 0.6s ease-out',
-				'zoom-in': 'zoom-in 0.5s ease-out'
+				'fade-in': 'fade-in 0.8s ease-out forwards',
+				'fade-out': 'fade-out 0.8s ease-out forwards',
+				'slide-up': 'slide-up 0.8s ease-out forwards',
+				'zoom-in': 'zoom-in 0.8s ease-out forwards'
 			}
 		}
 	},

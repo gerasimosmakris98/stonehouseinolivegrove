@@ -1,5 +1,5 @@
 
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { LanguageProvider } from '../components/LanguageContext';
 import Navbar from '../components/Navbar';
 import Hero from '../components/Hero';
@@ -10,7 +10,21 @@ import Reviews from '../components/Reviews';
 import Footer from '../components/Footer';
 
 const Index = () => {
+  const [sectionsInitialized, setSectionsInitialized] = useState(false);
+
   useEffect(() => {
+    // Initialize all sections to be visible immediately
+    const initializeSections = () => {
+      if (!sectionsInitialized) {
+        const sections = document.querySelectorAll('.animated-section');
+        sections.forEach(section => {
+          section.classList.add('animate');
+        });
+        setSectionsInitialized(true);
+      }
+    };
+
+    // Handle scroll animations for progressive reveal
     const handleScroll = () => {
       const sections = document.querySelectorAll('.animated-section');
       sections.forEach(section => {
@@ -23,14 +37,33 @@ const Index = () => {
       });
     };
 
-    // Call once to check elements in view on load
+    // Handle hash-based navigation to show the correct section
+    const handleHashChange = () => {
+      const hash = window.location.hash;
+      if (hash) {
+        setTimeout(() => {
+          const element = document.querySelector(hash);
+          if (element) {
+            element.scrollIntoView({ behavior: 'smooth' });
+          }
+        }, 100);
+      }
+    };
+
+    // Initialize immediately and handle hash if present
+    initializeSections();
+    handleHashChange();
     handleScroll();
     
+    // Add event listeners
     window.addEventListener('scroll', handleScroll);
+    window.addEventListener('hashchange', handleHashChange);
+    
     return () => {
       window.removeEventListener('scroll', handleScroll);
+      window.removeEventListener('hashchange', handleHashChange);
     };
-  }, []);
+  }, [sectionsInitialized]);
 
   useEffect(() => {
     document.title = "Stone House in Olive Grove | Kefalonia, Greece";

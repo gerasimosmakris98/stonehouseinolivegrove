@@ -1,4 +1,3 @@
-
 import { useState } from 'react';
 import { useLanguage } from './LanguageContext';
 import { ChevronDown, ChevronUp } from 'lucide-react';
@@ -32,7 +31,7 @@ const DetailsFAQ = () => {
   return (
     <section className="py-16 px-4 bg-gray-50" id="details">
       <div className="container mx-auto max-w-6xl">
-        <div className="text-center mb-12 animated-section">
+        <div className="text-center mb-12">
           <h2 className="text-3xl font-bold mb-3 text-gray-800">
             {t(details.title.en, details.title.el)}
           </h2>
@@ -42,7 +41,7 @@ const DetailsFAQ = () => {
         </div>
 
         {/* Tabs */}
-        <div className="flex flex-wrap border-b border-gray-200 mb-8 animated-section">
+        <div className="flex flex-wrap border-b border-gray-200 mb-8">
           <button
             onClick={() => handleTabClick('amenities')}
             className={`mr-4 py-2 px-4 font-medium text-sm transition-colors ${
@@ -86,7 +85,7 @@ const DetailsFAQ = () => {
         </div>
 
         {/* Tab Content */}
-        <div className="animated-section">
+        <div>
           {/* Amenities Tab */}
           {openTab === 'amenities' && (
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">

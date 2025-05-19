@@ -26,7 +26,7 @@ const PropertyOverview = () => {
     <section className="py-16 md:py-24 px-4 bg-white" id="overview">
       <div className="container mx-auto max-w-6xl">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-          <div className="animated-section" data-aos="fade-right">
+          <div>
             <h2 className="text-3xl font-bold mb-6 text-gray-800">
               {t(overview.title.en, overview.title.el)}
             </h2>
@@ -46,7 +46,7 @@ const PropertyOverview = () => {
             </div>
           </div>
           
-          <div className="grid grid-cols-2 gap-4 animated-section" data-aos="fade-left">
+          <div className="grid grid-cols-2 gap-4">
             <div className="overflow-hidden rounded-lg">
               <img 
                 src="/lovable-uploads/94f38100-e08d-4a2b-979c-68cd57a4a907.png" 

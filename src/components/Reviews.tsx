@@ -23,7 +23,7 @@ const Reviews = () => {
   return (
     <section className="py-16 px-4 bg-white" id="reviews">
       <div className="container mx-auto max-w-6xl">
-        <div className="text-center mb-12 animated-section" data-aos="fade-up">
+        <div className="text-center mb-12">
           <h2 className="text-3xl font-bold mb-3 text-gray-800">
             {t(reviews.title.en, reviews.title.el)}
           </h2>
@@ -42,7 +42,7 @@ const Reviews = () => {
           </div>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 animated-section" data-aos="fade-up">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {reviews.items.map((review, index) => (
             <div 
               key={index}
@@ -69,7 +69,7 @@ const Reviews = () => {
           ))}
         </div>
         
-        <div className="text-center mt-10 animated-section" data-aos="fade-up">
+        <div className="text-center mt-10">
           <a
             href={t(
               "https://www.booking.com/hotel/gr/denis-stone-villa-trapezaki.en-gb.html?lang=en-gb&soz=1&lang_changed=1#tab-reviews",
