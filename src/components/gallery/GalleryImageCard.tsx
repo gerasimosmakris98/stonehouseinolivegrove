@@ -2,7 +2,6 @@
 import { useState, useEffect } from 'react';
 import { useGallery } from './GalleryContext';
 import { GalleryImage } from '../../types/gallery';
-import { useLanguage } from '../LanguageContext';
 
 interface GalleryImageCardProps {
   image: GalleryImage;
@@ -11,7 +10,6 @@ interface GalleryImageCardProps {
 }
 
 const GalleryImageCard = ({ image, index, priority = false }: GalleryImageCardProps) => {
-  const { t } = useLanguage();
   const { openModal, handleImageLoad } = useGallery();
   const [isLoaded, setIsLoaded] = useState(false);
   const [isInView, setIsInView] = useState(false);
@@ -61,29 +59,8 @@ const GalleryImageCard = ({ image, index, priority = false }: GalleryImageCardPr
         />
       )}
 
-      {/* Hover overlay */}
-      <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-4">
-        <h3 className="text-white font-medium text-sm md:text-base">{image.alt}</h3>
-        <div className="flex gap-2 mt-2">
-          {Array.isArray(image.category) ? (
-            image.category.map(cat => (
-              <span key={cat} className="text-xs bg-white/20 backdrop-blur-sm text-white px-2 py-0.5 rounded-full">
-                {t(
-                  cat.charAt(0).toUpperCase() + cat.slice(1),
-                  cat === 'exterior' ? 'Εξωτερικό' : cat === 'interior' ? 'Εσωτερικό' : 'Θέα'
-                )}
-              </span>
-            ))
-          ) : (
-            <span className="text-xs bg-white/20 backdrop-blur-sm text-white px-2 py-0.5 rounded-full">
-              {t(
-                image.category.charAt(0).toUpperCase() + image.category.slice(1),
-                image.category === 'exterior' ? 'Εξωτερικό' : image.category === 'interior' ? 'Εσωτερικό' : 'Θέα'
-              )}
-            </span>
-          )}
-        </div>
-      </div>
+      {/* Hover overlay without labels or categories */}
+      <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
     </div>
   );
 };

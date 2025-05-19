@@ -1,7 +1,5 @@
 
 import { useGallery } from './GalleryContext';
-import GalleryFilters from './GalleryFilters';
-import GalleryCategories from './GalleryCategories';
 import GalleryGrid from './GalleryGrid';
 import GalleryModal from './GalleryModal';
 import GalleryPreloader from './GalleryPreloader';
@@ -11,7 +9,7 @@ import { useLanguage } from '../LanguageContext';
 
 const GalleryContainer = () => {
   const { t } = useLanguage();
-  const { loading, imagesLoaded, activeCategory, setActiveCategory, images, filteredImages } = useGallery();
+  const { loading, imagesLoaded } = useGallery();
 
   return (
     <section id="gallery" className="py-16 px-4 md:py-24 animated-section">
@@ -44,19 +42,11 @@ const GalleryContainer = () => {
           </div>
         </div>
         
+        {/* Gallery content without category filters */}
         <GlassCard variant="default" className="mb-10">
-          <GalleryCategories 
-            activeCategory={activeCategory}
-            onCategoryChange={setActiveCategory}
-            totalImages={30}
-            filteredCount={filteredImages.length}
-          />
-          <div className="mt-6">
-            <GalleryFilters />
-          </div>
+          {loading && !imagesLoaded ? <GalleryPreloader /> : <GalleryGrid />}
         </GlassCard>
-          
-        {loading && !imagesLoaded ? <GalleryPreloader /> : <GalleryGrid />}
+        
         <GalleryModal />
       </div>
     </section>
