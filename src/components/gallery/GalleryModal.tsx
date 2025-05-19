@@ -104,13 +104,13 @@ const GalleryModal = () => {
           
           <img
             src={selectedImage}
-            alt={filteredImages[currentIndex]?.alt || t("Villa view", "Άποψη βίλας")}
+            alt=""
             className={`max-h-[85vh] max-w-[85vw] object-contain rounded-lg transition-opacity duration-500 
               ${imageLoaded ? 'opacity-100' : 'opacity-0'}`}
             onLoad={handleImageLoad}
           />
           
-          {/* Counter indicator only - removed labels/text as requested */}
+          {/* Counter indicator only */}
           <div className="absolute bottom-4 left-0 right-0 text-center">
             <div className="flex justify-center">
               <span className="bg-black/50 backdrop-blur-sm text-white px-4 py-2 rounded-full text-sm">

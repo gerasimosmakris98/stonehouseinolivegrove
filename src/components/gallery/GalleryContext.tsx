@@ -1,8 +1,8 @@
 
 import React, { createContext, useContext, useState, useEffect } from 'react';
 import { GalleryImage, GalleryCategory } from '../../types/gallery';
-import { galleryImagesList } from './GalleryData';
-import { deduplicateImages, filterImagesByCategory } from '../../utils/galleryUtils';
+import { galleryImagesList } from './data';
+import { filterImagesByCategory } from '../../utils/galleryUtils';
 
 interface GalleryContextType {
   images: GalleryImage[];
@@ -11,7 +11,7 @@ interface GalleryContextType {
   selectedImage: string | null;
   currentIndex: number;
   imagesLoaded: number;
-  loading: boolean; // Added this property
+  loading: boolean;
   setActiveCategory: (category: GalleryCategory) => void;
   openModal: (img: string, index: number) => void;
   closeModal: () => void;
@@ -31,16 +31,13 @@ export const useGallery = () => {
 };
 
 export const GalleryProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
-  // Get unique images
-  const uniqueImages = deduplicateImages(galleryImagesList);
-  
-  const [images] = useState<GalleryImage[]>(uniqueImages);
+  const [images] = useState<GalleryImage[]>(galleryImagesList);
   const [activeCategory, setActiveCategory] = useState<GalleryCategory>('all');
-  const [filteredImages, setFilteredImages] = useState<GalleryImage[]>(uniqueImages);
+  const [filteredImages, setFilteredImages] = useState<GalleryImage[]>(galleryImagesList);
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
   const [currentIndex, setCurrentIndex] = useState(0);
   const [imagesLoaded, setImagesLoaded] = useState(0);
-  const [loading, setLoading] = useState(true); // Added loading state
+  const [loading, setLoading] = useState(true);
 
   // Set filtered images when category changes
   useEffect(() => {
@@ -74,14 +71,14 @@ export const GalleryProvider: React.FC<{ children: React.ReactNode }> = ({ child
   const handleImageLoad = () => {
     setImagesLoaded(prev => prev + 1);
     if (imagesLoaded >= images.length - 1) {
-      setLoading(false); // Set loading to false when all images are loaded
+      setLoading(false);
     }
   };
 
   // Preload all gallery images for smoother experience
   useEffect(() => {
     const preloadImages = () => {
-      setLoading(true); // Set loading to true when starting to load images
+      setLoading(true);
       images.forEach(img => {
         const image = new Image();
         image.src = img.src;
@@ -101,7 +98,7 @@ export const GalleryProvider: React.FC<{ children: React.ReactNode }> = ({ child
         selectedImage,
         currentIndex,
         imagesLoaded,
-        loading, // Added loading to the context value
+        loading,
         setActiveCategory,
         openModal,
         closeModal,

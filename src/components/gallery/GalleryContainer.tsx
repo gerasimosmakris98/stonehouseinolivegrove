@@ -3,6 +3,7 @@ import { useGallery } from './GalleryContext';
 import GalleryGrid from './GalleryGrid';
 import GalleryModal from './GalleryModal';
 import GalleryPreloader from './GalleryPreloader';
+import GalleryFilters from './GalleryFilters';
 import GlassCard from '../GlassCard';
 import CircularImage from '../CircularImage';
 import { useLanguage } from '../LanguageContext';
@@ -42,7 +43,10 @@ const GalleryContainer = () => {
           </div>
         </div>
         
-        {/* Gallery content without category filters */}
+        {/* Add back filters */}
+        <GalleryFilters className="mb-6" />
+        
+        {/* Gallery content */}
         <GlassCard variant="default" className="mb-10">
           {loading && !imagesLoaded ? <GalleryPreloader /> : <GalleryGrid />}
         </GlassCard>
