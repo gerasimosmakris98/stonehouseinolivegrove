@@ -11,6 +11,7 @@ interface GalleryContextType {
   selectedImage: string | null;
   currentIndex: number;
   imagesLoaded: number;
+  loading: boolean; // Added this property
   setActiveCategory: (category: GalleryCategory) => void;
   openModal: (img: string, index: number) => void;
   closeModal: () => void;
@@ -39,6 +40,7 @@ export const GalleryProvider: React.FC<{ children: React.ReactNode }> = ({ child
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
   const [currentIndex, setCurrentIndex] = useState(0);
   const [imagesLoaded, setImagesLoaded] = useState(0);
+  const [loading, setLoading] = useState(true); // Added loading state
 
   // Set filtered images when category changes
   useEffect(() => {
@@ -71,11 +73,15 @@ export const GalleryProvider: React.FC<{ children: React.ReactNode }> = ({ child
 
   const handleImageLoad = () => {
     setImagesLoaded(prev => prev + 1);
+    if (imagesLoaded >= images.length - 1) {
+      setLoading(false); // Set loading to false when all images are loaded
+    }
   };
 
   // Preload all gallery images for smoother experience
   useEffect(() => {
     const preloadImages = () => {
+      setLoading(true); // Set loading to true when starting to load images
       images.forEach(img => {
         const image = new Image();
         image.src = img.src;
@@ -95,6 +101,7 @@ export const GalleryProvider: React.FC<{ children: React.ReactNode }> = ({ child
         selectedImage,
         currentIndex,
         imagesLoaded,
+        loading, // Added loading to the context value
         setActiveCategory,
         openModal,
         closeModal,

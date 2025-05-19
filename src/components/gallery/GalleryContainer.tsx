@@ -11,7 +11,7 @@ import { useLanguage } from '../LanguageContext';
 
 const GalleryContainer = () => {
   const { t } = useLanguage();
-  const { loading, imagesLoaded } = useGallery();
+  const { loading, imagesLoaded, activeCategory, setActiveCategory, images, filteredImages } = useGallery();
 
   return (
     <section id="gallery" className="py-16 px-4 md:py-24 animated-section">
@@ -45,7 +45,12 @@ const GalleryContainer = () => {
         </div>
         
         <GlassCard variant="default" className="mb-10">
-          <GalleryCategories />
+          <GalleryCategories 
+            activeCategory={activeCategory}
+            onCategoryChange={setActiveCategory}
+            totalImages={images.length}
+            filteredCount={filteredImages.length}
+          />
           <div className="mt-6">
             <GalleryFilters />
           </div>
