@@ -45,6 +45,10 @@ const Index = () => {
           const element = document.querySelector(hash);
           if (element) {
             element.scrollIntoView({ behavior: 'smooth' });
+            // Ensure the section is visible when directly navigated to
+            if (element.classList.contains('animated-section')) {
+              element.classList.add('animate');
+            }
           }
         }, 100);
       }

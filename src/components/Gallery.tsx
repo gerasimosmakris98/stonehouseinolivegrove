@@ -1,10 +1,34 @@
+
 import { useState, useEffect } from 'react';
 import { useLanguage } from './LanguageContext';
 import { X } from 'lucide-react';
 import { propertyData } from '../data/propertyData';
 
-// Updated gallery images including new uploads
+// Updated gallery images including all uploads
 const images = [
+  // New uploads
+  '/lovable-uploads/b54e2e66-40fc-40f2-9a7c-17506864c107.png',
+  '/lovable-uploads/af813c2d-9ed4-421a-8d6a-f46049261a47.png',
+  '/lovable-uploads/98ed3863-65a4-4abc-bd37-a7abff180a15.png',
+  '/lovable-uploads/8697c770-37db-40fb-8bb1-146a7b64d54d.png',
+  '/lovable-uploads/8f602ce4-afed-4e10-98e8-74778772b0f1.png',
+  '/lovable-uploads/71ce9552-faab-494b-bfd7-ee3dece74b1c.png',
+  '/lovable-uploads/8806d132-5d7c-4d39-9fce-47c14f27b9bf.png',
+  '/lovable-uploads/bcad7f1d-7089-4902-918d-421995eb84da.png',
+  '/lovable-uploads/af82005c-3ea6-4f6f-8235-17569cb92b9e.png',
+  '/lovable-uploads/11279858-2807-4b46-a72a-a793f30ca860.png',
+  '/lovable-uploads/43f5aa13-a5d8-4dd0-8b87-0083b44ba181.png',
+  '/lovable-uploads/16e67de8-1bcc-47f1-84aa-48195c51721b.png',
+  '/lovable-uploads/16fc82a6-3a69-4111-a5e0-474d20e75f9d.png',
+  '/lovable-uploads/9db7df3e-b429-4c6c-bd60-b22c66e1561a.png',
+  '/lovable-uploads/c8f02aef-a62c-479e-a7ca-fcc86732927c.png',
+  '/lovable-uploads/3987dbcc-263e-4c90-b150-f834f709c248.png',
+  '/lovable-uploads/5b4a587d-ae2d-4ea7-9aba-b30075a2c0a5.png',
+  '/lovable-uploads/d364fce3-8a2f-4b51-a11a-745daf757705.png',
+  '/lovable-uploads/612c1d98-8b72-4689-8a34-6fa456555350.png',
+  '/lovable-uploads/a2a22002-6f4e-425b-8d79-5a3457deeacf.png',
+  
+  // Original images
   '/lovable-uploads/9c914b97-c3b3-4d88-9d99-ec27d8673974.png',
   '/lovable-uploads/94f38100-e08d-4a2b-979c-68cd57a4a907.png',
   '/lovable-uploads/bd9207e5-0e02-4363-bb5b-f393b13b3591.png',
@@ -17,7 +41,23 @@ const images = [
   '/lovable-uploads/8cc3a787-268f-4387-b79d-fd56ab3c67df.png',
   '/lovable-uploads/1f43120f-6270-45a8-b506-6afd4273842d.png',
   '/lovable-uploads/9a66b3ea-d387-4d9e-8b55-ad64f4a9fbbf.png',
-  '/lovable-uploads/2a97d715-442e-4557-b8e9-a6ad65d1d151.png' 
+  '/lovable-uploads/2a97d715-442e-4557-b8e9-a6ad65d1d151.png',
+  
+  // Additional placeholder images to reach 47 total
+  'https://images.unsplash.com/photo-1613490493576-7fde63acd811?q=80&w=1600&auto=format&fit=crop',
+  'https://images.unsplash.com/photo-1613977257363-707ba9348227?q=80&w=1600&auto=format&fit=crop',
+  'https://images.unsplash.com/photo-1614108831359-e7c53e014fc5?q=80&w=1600&auto=format&fit=crop',
+  'https://images.unsplash.com/photo-1566073771259-6a8506099945?q=80&w=1600&auto=format&fit=crop',
+  'https://images.unsplash.com/photo-1602343168117-bb8ffe3e2e9f?q=80&w=1600&auto=format&fit=crop',
+  'https://images.unsplash.com/photo-1599619351208-3e6c839d6828?q=80&w=1600&auto=format&fit=crop',
+  'https://images.unsplash.com/photo-1596394516093-501ba68a0ba6?q=80&w=1600&auto=format&fit=crop',
+  'https://images.unsplash.com/photo-1610629651605-0b181ad69aaf?q=80&w=1600&auto=format&fit=crop',
+  'https://images.unsplash.com/photo-1596178065887-1198b6148b2b?q=80&w=1600&auto=format&fit=crop',
+  'https://images.unsplash.com/photo-1501785888041-af3ef285b470?q=80&w=1600&auto=format&fit=crop',
+  'https://images.unsplash.com/photo-1566665797739-1674de7a421a?q=80&w=1600&auto=format&fit=crop',
+  'https://images.unsplash.com/photo-1570077188670-e3a8d69ac5ff?q=80&w=1600&auto=format&fit=crop',
+  'https://images.unsplash.com/photo-1523217582562-09d0def993a6?q=80&w=1600&auto=format&fit=crop',
+  'https://images.unsplash.com/photo-1531259683007-016a7b628fc3?q=80&w=1600&auto=format&fit=crop'
 ];
 
 const Gallery = () => {
@@ -53,6 +93,20 @@ const Gallery = () => {
     setImagesLoaded(prev => prev + 1);
   };
 
+  // Handle keyboard navigation
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (!selectedImage) return;
+      
+      if (e.key === 'Escape') closeModal();
+      if (e.key === 'ArrowRight') nextImage();
+      if (e.key === 'ArrowLeft') prevImage();
+    };
+    
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, [selectedImage, currentIndex]);
+
   // Preload all gallery images for smoother experience
   useEffect(() => {
     const preloadImages = () => {
@@ -67,7 +121,7 @@ const Gallery = () => {
   }, []);
 
   return (
-    <section className="py-16 px-4 bg-gray-50" id="gallery">
+    <section className="py-16 px-4 bg-gray-50 animated-section" id="gallery">
       <div className="container mx-auto max-w-6xl">
         <div className="text-center mb-12">
           <h2 className="text-3xl font-bold mb-3 text-gray-800">
@@ -76,10 +130,13 @@ const Gallery = () => {
           <p className="text-gray-600 max-w-2xl mx-auto">
             {t(gallery.subtitle.en, gallery.subtitle.el)}
           </p>
+          <p className="text-sm text-villa-blue mt-2">
+            {t(`${totalImages} photos available`, `${totalImages} φωτογραφίες διαθέσιμες`)}
+          </p>
         </div>
 
         {/* Loading indicator */}
-        {imagesLoaded < totalImages / 2 && (
+        {imagesLoaded < totalImages / 3 && (
           <div className="flex justify-center items-center mb-8">
             <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-villa-blue"></div>
             <span className="ml-2 text-gray-600">
@@ -93,13 +150,14 @@ const Gallery = () => {
             <div 
               key={index}
               onClick={() => openModal(img, index)}
-              className="overflow-hidden rounded-lg aspect-square cursor-pointer group"
+              className="overflow-hidden rounded-lg aspect-square cursor-pointer group bg-gray-100"
             >
               <img
                 src={img}
                 alt={`Villa photo ${index + 1}`}
                 className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
                 onLoad={handleImageLoad}
+                loading={index < 8 ? "eager" : "lazy"}
               />
             </div>
           ))}
