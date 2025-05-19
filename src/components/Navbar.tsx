@@ -33,7 +33,7 @@ const Navbar = () => {
       <div className="container mx-auto px-4 md:px-6 flex justify-between items-center">
         <div className="text-lg md:text-xl font-semibold text-villa-blue">
           <span className={scrolled ? 'text-villa-blue' : 'text-white drop-shadow-md'}>
-            Stone House
+            Stone House in Olive Grove
           </span>
         </div>
         
@@ -45,6 +45,14 @@ const Navbar = () => {
             } hover:text-villa-blue transition-colors`}
           >
             {t('Gallery', 'Γκαλερί')}
+          </a>
+          <a 
+            href="#details" 
+            className={`hidden md:block text-sm ${
+              scrolled ? 'text-gray-700' : 'text-white drop-shadow-md'
+            } hover:text-villa-blue transition-colors`}
+          >
+            {t('Details', 'Λεπτομέρειες')}
           </a>
           <a 
             href="#reviews" 

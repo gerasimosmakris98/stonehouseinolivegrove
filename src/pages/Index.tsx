@@ -5,6 +5,7 @@ import Navbar from '../components/Navbar';
 import Hero from '../components/Hero';
 import PropertyOverview from '../components/PropertyOverview';
 import Gallery from '../components/Gallery';
+import DetailsFAQ from '../components/DetailsFAQ';
 import Reviews from '../components/Reviews';
 import Footer from '../components/Footer';
 
@@ -32,7 +33,7 @@ const Index = () => {
   }, []);
 
   useEffect(() => {
-    document.title = "Stone House in olive Grove | Kefalonia, Greece";
+    document.title = "Stone House in Olive Grove | Kefalonia, Greece";
   }, []);
 
   return (
@@ -42,6 +43,7 @@ const Index = () => {
         <Hero />
         <PropertyOverview />
         <Gallery />
+        <DetailsFAQ />
         <Reviews />
         <Footer />
       </div>

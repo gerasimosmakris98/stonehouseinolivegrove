@@ -4,6 +4,7 @@ import { useLanguage } from './LanguageContext';
 import { X } from 'lucide-react';
 import { propertyData } from '../data/propertyData';
 
+// Updated gallery images including new uploads
 const images = [
   '/lovable-uploads/9c914b97-c3b3-4d88-9d99-ec27d8673974.png',
   '/lovable-uploads/94f38100-e08d-4a2b-979c-68cd57a4a907.png',
@@ -16,7 +17,8 @@ const images = [
   '/lovable-uploads/5e5620c9-3a83-41dc-818f-4f1facee257e.png',
   '/lovable-uploads/8cc3a787-268f-4387-b79d-fd56ab3c67df.png',
   '/lovable-uploads/1f43120f-6270-45a8-b506-6afd4273842d.png',
-  '/lovable-uploads/9a66b3ea-d387-4d9e-8b55-ad64f4a9fbbf.png'
+  '/lovable-uploads/9a66b3ea-d387-4d9e-8b55-ad64f4a9fbbf.png',
+  '/lovable-uploads/2a97d715-442e-4557-b8e9-a6ad65d1d151.png' 
 ];
 
 const Gallery = () => {
@@ -24,6 +26,8 @@ const Gallery = () => {
   const { gallery } = propertyData;
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [imagesLoaded, setImagesLoaded] = useState(0);
+  const totalImages = images.length;
 
   const openModal = (img: string, index: number) => {
     setSelectedImage(img);
@@ -46,6 +50,24 @@ const Gallery = () => {
     setSelectedImage(images[(currentIndex === 0 ? images.length - 1 : currentIndex - 1)]);
   };
 
+  const handleImageLoad = () => {
+    setImagesLoaded(prev => prev + 1);
+  };
+
+  // Preload all gallery images for smoother experience
+  const preloadImages = () => {
+    images.forEach(src => {
+      const img = new Image();
+      img.src = src;
+      img.onload = handleImageLoad;
+    });
+  };
+
+  // Call preload on component mount
+  useState(() => {
+    preloadImages();
+  });
+
   return (
     <section className="py-16 px-4 bg-gray-50" id="gallery">
       <div className="container mx-auto max-w-6xl">
@@ -58,6 +80,16 @@ const Gallery = () => {
           </p>
         </div>
 
+        {/* Loading indicator */}
+        {imagesLoaded < totalImages / 2 && (
+          <div className="flex justify-center items-center mb-8">
+            <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-villa-blue"></div>
+            <span className="ml-2 text-gray-600">
+              {t("Loading gallery...", "Φόρτωση γκαλερί...")}
+            </span>
+          </div>
+        )}
+
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 animated-section" data-aos="zoom-in">
           {images.map((img, index) => (
             <div 
@@ -69,6 +101,7 @@ const Gallery = () => {
                 src={img}
                 alt={`Villa photo ${index + 1}`}
                 className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                onLoad={handleImageLoad}
               />
             </div>
           ))}
