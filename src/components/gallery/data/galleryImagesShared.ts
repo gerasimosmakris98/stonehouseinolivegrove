@@ -12,12 +12,6 @@ export const sharedImages: GalleryImage[] = [
     alt: 'Villa terrace with sea view'
   },
   {
-    id: generateId('/lovable-uploads/d364fce3-8a2f-4b51-a11a-745daf757705.png'),
-    src: '/lovable-uploads/d364fce3-8a2f-4b51-a11a-745daf757705.png',
-    category: 'exterior',
-    alt: 'Villa sunset view'
-  },
-  {
     id: generateId('/lovable-uploads/39eadac5-a82b-43af-a1c8-9bf519f59013.png'),
     src: '/lovable-uploads/39eadac5-a82b-43af-a1c8-9bf519f59013.png',
     category: ['exterior', 'views'],

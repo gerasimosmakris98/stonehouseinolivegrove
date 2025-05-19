@@ -83,17 +83,11 @@ export const exteriorImages: GalleryImage[] = [
     category: 'exterior',
     alt: 'Terrace dining area with view'
   },
-  // New exterior images from upload
   {
-    id: generateId('/lovable-uploads/88755f59-81c1-497f-9cc2-e814621a9241.png'),
-    src: '/lovable-uploads/88755f59-81c1-497f-9cc2-e814621a9241.png',
+    id: generateId('/lovable-uploads/d364fce3-8a2f-4b51-a11a-745daf757705.png'),
+    src: '/lovable-uploads/d364fce3-8a2f-4b51-a11a-745daf757705.png',
     category: 'exterior',
-    alt: 'Villa aerial view with sea'
-  },
-  {
-    id: generateId('/lovable-uploads/4752d261-93d8-4f6e-8fa9-f79d3b33558b.png'),
-    src: '/lovable-uploads/4752d261-93d8-4f6e-8fa9-f79d3b33558b.png',
-    category: 'exterior',
-    alt: 'Villa terrace with sea view'
+    alt: 'Villa sunset view'
   }
+  // Removed duplicated images that are either in views category or shared category
 ];

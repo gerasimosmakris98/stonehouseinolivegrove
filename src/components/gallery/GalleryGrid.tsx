@@ -5,7 +5,7 @@ import GalleryImageCard from './GalleryImageCard';
 
 const GalleryGrid = () => {
   const { t } = useLanguage();
-  const { images } = useGallery();
+  const { filteredImages: images } = useGallery();
 
   if (images.length === 0) {
     return (

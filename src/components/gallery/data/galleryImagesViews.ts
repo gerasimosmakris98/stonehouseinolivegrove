@@ -47,18 +47,6 @@ export const viewImages: GalleryImage[] = [
     src: '/lovable-uploads/564e29c0-2451-44c8-bf1a-65585724703d.png',
     category: 'views',
     alt: 'Sunset view'
-  },
-  // New views from upload
-  {
-    id: generateId('/lovable-uploads/88755f59-81c1-497f-9cc2-e814621a9241.png'),
-    src: '/lovable-uploads/88755f59-81c1-497f-9cc2-e814621a9241.png',
-    category: 'views',
-    alt: 'Panoramic sea view'
-  },
-  {
-    id: generateId('/lovable-uploads/4752d261-93d8-4f6e-8fa9-f79d3b33558b.png'),
-    src: '/lovable-uploads/4752d261-93d8-4f6e-8fa9-f79d3b33558b.png',
-    category: 'views',
-    alt: 'Balcony sea view'
   }
+  // Removed duplicated entries that were also in exterior images
 ];
