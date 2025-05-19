@@ -1,73 +1,59 @@
 
-import { useEffect, useRef } from 'react';
-import { useLanguage } from '../LanguageContext';
-import { propertyData } from '../../data/propertyData';
 import { useGallery } from './GalleryContext';
 import GalleryFilters from './GalleryFilters';
+import GalleryCategories from './GalleryCategories';
 import GalleryGrid from './GalleryGrid';
 import GalleryModal from './GalleryModal';
 import GalleryPreloader from './GalleryPreloader';
+import GlassCard from '../GlassCard';
+import CircularImage from '../CircularImage';
+import { useLanguage } from '../LanguageContext';
 
 const GalleryContainer = () => {
   const { t } = useLanguage();
-  const { gallery } = propertyData;
-  const { images } = useGallery();
-  const sectionRef = useRef<HTMLElement>(null);
-  
-  // Add scroll-based animation
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('animate');
-          }
-        });
-      },
-      { threshold: 0.1 }
-    );
-    
-    if (sectionRef.current) {
-      observer.observe(sectionRef.current);
-    }
-    
-    return () => observer.disconnect();
-  }, []);
+  const { loading, imagesLoaded } = useGallery();
 
   return (
-    <section 
-      ref={sectionRef}
-      className="py-16 px-4 bg-gradient-to-b from-gray-50 to-white animated-section opacity-0 transform translate-y-8 transition-all duration-1000"
-      id="gallery"
-    >
-      <div className="container mx-auto max-w-6xl">
-        <div className="text-center mb-12 animated-element">
-          <h2 className="text-4xl md:text-5xl font-playfair font-bold mb-3 text-gray-800 fade-in-up">
-            {t(gallery.title.en, gallery.title.el)}
-          </h2>
-          <p className="text-gray-600 max-w-2xl mx-auto mb-4 fade-in-up animation-delay-100">
-            {t(gallery.subtitle.en, gallery.subtitle.el)}
-          </p>
-          <p className="text-sm text-villa-blue mt-2 fade-in-up animation-delay-200">
-            {t(
-              `${images.length} photos available`,
-              `${images.length} φωτογραφίες διαθέσιμες`
-            )}
-          </p>
+    <section id="gallery" className="py-16 px-4 md:py-24 animated-section">
+      <div className="container mx-auto max-w-7xl">
+        <div className="flex flex-col md:flex-row items-start md:items-center justify-between mb-10 gap-6">
+          <div className="flex-1">
+            <h2 className="text-3xl md:text-4xl font-playfair font-bold mb-4">
+              {t("Gallery", "Γκαλερί")}
+            </h2>
+            <p className="text-gray-600 max-w-2xl">
+              {t(
+                "Explore our beautiful villa through these carefully selected images. Experience the comfort and elegance of our interior spaces and the natural beauty surrounding the property.",
+                "Εξερευνήστε την όμορφη βίλα μας μέσα από αυτές τις προσεκτικά επιλεγμένες εικόνες. Βιώστε την άνεση και την κομψότητα των εσωτερικών χώρων και τη φυσική ομορφιά που περιβάλλει το ακίνητο."
+              )}
+            </p>
+          </div>
+          <div className="flex gap-3">
+            <CircularImage 
+              src="/lovable-uploads/c8f02aef-a62c-479e-a7ca-fcc86732927c.png" 
+              alt="Villa exterior"
+              size="md"
+              hasBorder={true}
+            />
+            <CircularImage 
+              src="/lovable-uploads/23581271-5d81-4d29-a0d9-505687de7e48.png" 
+              alt="View from villa"
+              size="md"
+              hasGradient={true}
+            />
+          </div>
         </div>
-
-        {/* Gallery filters */}
-        <GalleryFilters className="mb-8 animated-element" />
-
-        {/* Loading indicator */}
-        <GalleryPreloader />
-
-        {/* Gallery grid */}
-        <GalleryGrid />
+        
+        <GlassCard variant="default" className="mb-10">
+          <GalleryCategories />
+          <div className="mt-6">
+            <GalleryFilters />
+          </div>
+        </GlassCard>
+          
+        {loading && !imagesLoaded ? <GalleryPreloader /> : <GalleryGrid />}
+        <GalleryModal />
       </div>
-
-      {/* Lightbox modal */}
-      <GalleryModal />
     </section>
   );
 };
