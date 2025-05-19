@@ -48,7 +48,7 @@ const GalleryContainer = () => {
           <GalleryCategories 
             activeCategory={activeCategory}
             onCategoryChange={setActiveCategory}
-            totalImages={images.length}
+            totalImages={30}
             filteredCount={filteredImages.length}
           />
           <div className="mt-6">
