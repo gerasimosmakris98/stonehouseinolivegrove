@@ -2,7 +2,7 @@
 import { useLanguage } from '../LanguageContext';
 import { useGallery } from './GalleryContext';
 import { GalleryCategory } from '../../types/gallery';
-import { galleryCategories } from './GalleryData';
+import { galleryCategories } from './data/galleryCategories';
 import { countImagesByCategory } from '../../utils/galleryUtils';
 
 interface GalleryFiltersProps {

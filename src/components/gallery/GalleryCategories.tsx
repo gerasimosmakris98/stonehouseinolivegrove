@@ -1,6 +1,6 @@
 
 import { useLanguage } from '../LanguageContext';
-import { galleryCategories } from './GalleryData';
+import { galleryCategories } from './data/galleryCategories';
 import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
 
 export type GalleryCategory = 'all' | 'exterior' | 'interior' | 'views';
