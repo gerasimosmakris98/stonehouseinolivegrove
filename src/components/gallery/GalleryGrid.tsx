@@ -1,17 +1,13 @@
 
 import { useLanguage } from '../LanguageContext';
-import { GalleryImage } from '../../types/gallery';
+import { useGallery } from './GalleryContext';
+import GalleryImageCard from './GalleryImageCard';
 
-interface GalleryGridProps {
-  images: GalleryImage[];
-  onImageClick: (img: string, index: number) => void;
-  onImageLoad: () => void;
-}
-
-const GalleryGrid = ({ images, onImageClick, onImageLoad }: GalleryGridProps) => {
+const GalleryGrid = () => {
   const { t } = useLanguage();
-  
-  if (images.length === 0) {
+  const { filteredImages } = useGallery();
+
+  if (filteredImages.length === 0) {
     return (
       <div className="text-center py-12">
         <p className="text-gray-500">
@@ -22,21 +18,14 @@ const GalleryGrid = ({ images, onImageClick, onImageLoad }: GalleryGridProps) =>
   }
   
   return (
-    <div className="gallery-grid">
-      {images.map((img, index) => (
-        <div
-          key={img.id}
-          onClick={() => onImageClick(img.src, index)}
-          className="gallery-item"
-        >
-          <img
-            src={img.src}
-            alt={img.alt || `Villa photo ${index + 1}`}
-            className="gallery-image"
-            onLoad={onImageLoad}
-            loading={index < 8 ? "eager" : "lazy"}
-          />
-        </div>
+    <div className="gallery-grid grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-6">
+      {filteredImages.map((img, index) => (
+        <GalleryImageCard 
+          key={img.id} 
+          image={img} 
+          index={index} 
+          priority={index < 4} // prioritize first 4 images
+        />
       ))}
     </div>
   );

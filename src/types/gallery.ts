@@ -6,4 +6,13 @@ export interface GalleryImage {
   src: string;
   alt?: string;
   category: GalleryCategory | GalleryCategory[];
+  featured?: boolean;
+}
+
+export interface GalleryCategoryInfo {
+  id: GalleryCategory;
+  label: {
+    en: string;
+    el: string;
+  };
 }
