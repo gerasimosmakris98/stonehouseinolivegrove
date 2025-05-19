@@ -110,11 +110,8 @@ const GalleryModal = () => {
             onLoad={handleImageLoad}
           />
           
-          <div className="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-black/70 to-transparent">
-            <h3 className="text-white text-center text-lg mb-2">
-              {filteredImages[currentIndex]?.alt || t("Villa view", "Άποψη βίλας")}
-            </h3>
-            
+          {/* Counter indicator only - removed labels/text as requested */}
+          <div className="absolute bottom-4 left-0 right-0 text-center">
             <div className="flex justify-center">
               <span className="bg-black/50 backdrop-blur-sm text-white px-4 py-2 rounded-full text-sm">
                 {currentIndex + 1} / {filteredImages.length}
