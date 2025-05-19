@@ -20,6 +20,50 @@ const Reviews = () => {
       ));
   };
 
+  // Updated mock reviews from the screenshots
+  const reviewItems = [
+    {
+      name: "Paul",
+      country: { en: "United Kingdom", el: "Ηνωμένο Βασίλειο" },
+      rating: 10,
+      date: "27 September 2023",
+      comment: {
+        en: "We had a wonderful time great location. The Villa was superb and Angela could not of been more helpful many thanks once again.",
+        el: "Περάσαμε υπέροχα σε εξαιρετική τοποθεσία. Η Βίλα ήταν υπέροχη και η Angela δεν θα μπορούσε να είναι πιο εξυπηρετική, ευχαριστούμε πολύ για άλλη μια φορά."
+      }
+    },
+    {
+      name: "Corrado",
+      country: { en: "Italy", el: "Ιταλία" },
+      rating: 9,
+      date: "5 August 2023",
+      comment: {
+        en: "Superb. Villa spacious, large bathrooms and in order, terraces equipped on all sides, brand new appliances and complete kitchen equipment. Covered parking space to protect the car from the sun.",
+        el: "Υπέροχο. Ευρύχωρη βίλα, μεγάλα μπάνια και σε τάξη, εξοπλισμένες βεράντες σε όλες τις πλευρές, ολοκαίνουργιες συσκευές και πλήρης εξοπλισμός κουζίνας. Καλυμμένος χώρος στάθμευσης για προστασία του αυτοκινήτου από τον ήλιο."
+      }
+    },
+    {
+      name: "Marcin",
+      country: { en: "Poland", el: "Πολωνία" },
+      rating: 9,
+      date: "28 August 2022",
+      comment: {
+        en: "4* hotel standard 5*. Hotel smelling newness (2021). Very good breakfast which you eat on the roof of the building with a beautiful view of the sea.",
+        el: "Πρότυπο ξενοδοχείου 4* 5*. Ξενοδοχείο που μυρίζει καινούργιο (2021). Πολύ καλό πρωινό που τρώτε στην οροφή του κτιρίου με υπέροχη θέα στη θάλασσα."
+      }
+    },
+    {
+      name: "Ioana",
+      country: { en: "Romania", el: "Ρουμανία" },
+      rating: 10,
+      date: "8 August 2024",
+      comment: {
+        en: "Exceptional.",
+        el: "Εξαιρετικό."
+      }
+    }
+  ];
+
   return (
     <section className="py-16 px-4 bg-white" id="reviews">
       <div className="container mx-auto max-w-6xl">
@@ -31,8 +75,11 @@ const Reviews = () => {
             {t(reviews.subtitle.en, reviews.subtitle.el)}
           </p>
           
-          <div className="inline-flex items-center mt-6 bg-blue-50 px-6 py-3 rounded-full">
-            <span className="text-3xl font-bold text-villa-blue mr-2">{reviews.rating}</span>
+          <div className="inline-flex items-center mt-6 bg-blue-50 px-4 py-3 rounded-full flex-wrap justify-center">
+            <div className="flex items-center mr-2">
+              <span className="text-3xl font-bold text-villa-blue">9.4</span>
+              <span className="text-xl text-villa-blue font-medium">/10</span>
+            </div>
             <div className="flex space-x-1">
               {renderStars(9.4)}
             </div>
@@ -43,7 +90,7 @@ const Reviews = () => {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {reviews.items.map((review, index) => (
+          {reviewItems.map((review, index) => (
             <div 
               key={index}
               className="bg-gray-50 border border-gray-100 rounded-lg p-6 hover:shadow-md transition-shadow"
