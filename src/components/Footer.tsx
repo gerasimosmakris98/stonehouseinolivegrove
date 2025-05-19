@@ -77,15 +77,15 @@ const Footer = () => {
                   {t(contact.address.en, contact.address.el)}
                 </span>
               </li>
-              <li className="flex">
+              <li className="flex items-center hover:text-white transition-colors">
                 <Phone className="text-villa-blue w-5 h-5 mr-3 flex-shrink-0" />
-                <a href={`tel:${contact.phone}`} className="text-gray-300 hover:text-white transition-colors">
+                <a href={`tel:${contact.phone}`} className="text-gray-300 hover:text-white transition-colors sr-only">
                   {contact.phone}
                 </a>
               </li>
-              <li className="flex">
+              <li className="flex items-center hover:text-white transition-colors">
                 <Mail className="text-villa-blue w-5 h-5 mr-3 flex-shrink-0" />
-                <a href={`mailto:${contact.email}`} className="text-gray-300 hover:text-white transition-colors">
+                <a href={`mailto:${contact.email}`} className="text-gray-300 hover:text-white transition-colors sr-only">
                   {contact.email}
                 </a>
               </li>
@@ -115,14 +115,7 @@ const Footer = () => {
           <p className="text-gray-400 text-sm">
             &copy; {new Date().getFullYear()} Stone House in Olive Grove. {t("All rights reserved.", "Όλα τα δικαιώματα διατηρούνται.")}
           </p>
-          <div className="flex space-x-4 mt-4 sm:mt-0">
-            <a href="#" className="text-gray-400 hover:text-white text-sm transition-colors">
-              {t("Privacy Policy", "Πολιτική Απορρήτου")}
-            </a>
-            <a href="#" className="text-gray-400 hover:text-white text-sm transition-colors">
-              {t("Terms of Service", "Όροι Χρήσης")}
-            </a>
-          </div>
+          {/* Privacy Policy and Terms of Service links removed as requested */}
         </div>
       </div>
     </footer>
