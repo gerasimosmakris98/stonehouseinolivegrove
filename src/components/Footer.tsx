@@ -11,7 +11,7 @@ const Footer = () => {
     <footer className="relative pt-20 pb-8 overflow-hidden" id="contact">
       {/* Background with overlay */}
       <div className="absolute inset-0 bg-gray-900">
-        <div className="absolute inset-0 bg-[url('/lovable-uploads/b54e2e66-40fc-40f2-9a7c-17506864c107.png')] bg-cover bg-center opacity-20"></div>
+        <div className="absolute inset-0 bg-[url('/lovable-uploads/4ee67a01-4242-45de-846b-c078e1a3ac18.png')] bg-cover bg-center opacity-25"></div>
         <div className="absolute inset-0 bg-gradient-to-b from-transparent via-gray-900/90 to-gray-900"></div>
       </div>
       
@@ -79,13 +79,13 @@ const Footer = () => {
               </li>
               <li className="flex items-center hover:text-white transition-colors">
                 <Phone className="text-villa-blue w-5 h-5 mr-3 flex-shrink-0" />
-                <a href={`tel:${contact.phone}`} className="text-gray-300 hover:text-white transition-colors sr-only">
+                <a href={`tel:${contact.phone}`} className="text-gray-300 hover:text-white transition-colors">
                   {contact.phone}
                 </a>
               </li>
               <li className="flex items-center hover:text-white transition-colors">
                 <Mail className="text-villa-blue w-5 h-5 mr-3 flex-shrink-0" />
-                <a href={`mailto:${contact.email}`} className="text-gray-300 hover:text-white transition-colors sr-only">
+                <a href={`mailto:${contact.email}`} className="text-gray-300 hover:text-white transition-colors">
                   {contact.email}
                 </a>
               </li>
@@ -115,7 +115,6 @@ const Footer = () => {
           <p className="text-gray-400 text-sm">
             &copy; {new Date().getFullYear()} Stone House in Olive Grove. {t("All rights reserved.", "Όλα τα δικαιώματα διατηρούνται.")}
           </p>
-          {/* Privacy Policy and Terms of Service links removed as requested */}
         </div>
       </div>
     </footer>

@@ -1,3 +1,4 @@
+
 import React from 'react';
 interface CircularImageProps {
   src: string;
@@ -42,7 +43,7 @@ const CircularImage = ({
       </div>;
   }
   return <div className={containerClasses}>
-      
+      <img src={src} alt={alt} className="w-full h-full object-cover" />
     </div>;
 };
 export default CircularImage;
