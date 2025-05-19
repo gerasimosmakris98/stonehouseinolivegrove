@@ -4,9 +4,9 @@ import { useLanguage } from './LanguageContext';
 import { X } from 'lucide-react';
 import { propertyData } from '../data/propertyData';
 
-// Updated gallery images including all uploads
+// Updated gallery images including only the uploaded villa photos
 const images = [
-  // New uploads
+  // First batch of 20 images you previously uploaded
   '/lovable-uploads/b54e2e66-40fc-40f2-9a7c-17506864c107.png',
   '/lovable-uploads/af813c2d-9ed4-421a-8d6a-f46049261a47.png',
   '/lovable-uploads/98ed3863-65a4-4abc-bd37-a7abff180a15.png',
@@ -28,36 +28,36 @@ const images = [
   '/lovable-uploads/612c1d98-8b72-4689-8a34-6fa456555350.png',
   '/lovable-uploads/a2a22002-6f4e-425b-8d79-5a3457deeacf.png',
   
-  // Original images
+  // Second batch of 20 images you just uploaded
+  '/lovable-uploads/3a44917f-b318-4bbe-be2b-a21f6fa70c3c.png', 
+  '/lovable-uploads/090a7495-4fe0-480f-99d2-ceb0ae316faa.png',
+  '/lovable-uploads/8a1a84b8-5443-4b63-b384-0312aea2eece.png',
+  '/lovable-uploads/0102d33e-4ef1-4c82-948b-502346224569.png',
+  '/lovable-uploads/3e9853e9-5c3a-479b-a317-2de60b84bca2.png',
+  '/lovable-uploads/564e29c0-2451-44c8-bf1a-65585724703d.png',
+  '/lovable-uploads/23581271-5d81-4d29-a0d9-505687de7e48.png',
+  '/lovable-uploads/c6823457-3962-48f1-99fd-5f2d01317c04.png',
+  '/lovable-uploads/385ed79a-3f0a-4e8a-9c74-ec37ff012957.png',
+  '/lovable-uploads/e60814c2-d815-4380-a1df-84396a4e7657.png',
+  '/lovable-uploads/fa0472e9-2166-4733-a8b4-4ca7cbf4fb78.png',
+  '/lovable-uploads/91be120b-7601-4d4a-ad02-66e918e7bd05.png',
+  '/lovable-uploads/db997512-a713-4cd9-909d-c0284a66975f.png',
+  '/lovable-uploads/af692637-e1e4-40c5-b448-3baee8fa39be.png',
+  '/lovable-uploads/e5c725a3-7e45-4629-a25e-c3528a0f5d20.png',
+  '/lovable-uploads/7770dc9b-7cbf-4e13-9a4f-21615c61efa3.png',
+  '/lovable-uploads/8d644e4a-7eb0-4fb2-bcec-2d7b0264bf4a.png',
+  '/lovable-uploads/aa63e5a7-0ef0-4248-9165-c1290f940c66.png',
+  '/lovable-uploads/e4c67d94-3d4a-40c5-86f6-81c031164b3a.png',
+  '/lovable-uploads/712d9536-6100-455a-9f00-1ccc5fdd810f.png',
+  
+  // Original villa photos from first batch
   '/lovable-uploads/9c914b97-c3b3-4d88-9d99-ec27d8673974.png',
   '/lovable-uploads/94f38100-e08d-4a2b-979c-68cd57a4a907.png',
   '/lovable-uploads/bd9207e5-0e02-4363-bb5b-f393b13b3591.png',
   '/lovable-uploads/61e1f3c6-b6b4-4b94-a690-ef45a0fdb3e9.png',
   '/lovable-uploads/fe8d8ea8-689e-4b4e-8981-c0cf9cd10c76.png',
   '/lovable-uploads/4e7131b7-0396-46d2-be4b-9c862cd7f181.png',
-  '/lovable-uploads/f41f0c40-2fba-4def-9390-a80b7f3ba58b.png',
-  '/lovable-uploads/edbf8042-3235-4834-99db-2729d229f8c0.png',
-  '/lovable-uploads/5e5620c9-3a83-41dc-818f-4f1facee257e.png',
-  '/lovable-uploads/8cc3a787-268f-4387-b79d-fd56ab3c67df.png',
-  '/lovable-uploads/1f43120f-6270-45a8-b506-6afd4273842d.png',
-  '/lovable-uploads/9a66b3ea-d387-4d9e-8b55-ad64f4a9fbbf.png',
-  '/lovable-uploads/2a97d715-442e-4557-b8e9-a6ad65d1d151.png',
-  
-  // Additional placeholder images to reach 47 total
-  'https://images.unsplash.com/photo-1613490493576-7fde63acd811?q=80&w=1600&auto=format&fit=crop',
-  'https://images.unsplash.com/photo-1613977257363-707ba9348227?q=80&w=1600&auto=format&fit=crop',
-  'https://images.unsplash.com/photo-1614108831359-e7c53e014fc5?q=80&w=1600&auto=format&fit=crop',
-  'https://images.unsplash.com/photo-1566073771259-6a8506099945?q=80&w=1600&auto=format&fit=crop',
-  'https://images.unsplash.com/photo-1602343168117-bb8ffe3e2e9f?q=80&w=1600&auto=format&fit=crop',
-  'https://images.unsplash.com/photo-1599619351208-3e6c839d6828?q=80&w=1600&auto=format&fit=crop',
-  'https://images.unsplash.com/photo-1596394516093-501ba68a0ba6?q=80&w=1600&auto=format&fit=crop',
-  'https://images.unsplash.com/photo-1610629651605-0b181ad69aaf?q=80&w=1600&auto=format&fit=crop',
-  'https://images.unsplash.com/photo-1596178065887-1198b6148b2b?q=80&w=1600&auto=format&fit=crop',
-  'https://images.unsplash.com/photo-1501785888041-af3ef285b470?q=80&w=1600&auto=format&fit=crop',
-  'https://images.unsplash.com/photo-1566665797739-1674de7a421a?q=80&w=1600&auto=format&fit=crop',
-  'https://images.unsplash.com/photo-1570077188670-e3a8d69ac5ff?q=80&w=1600&auto=format&fit=crop',
-  'https://images.unsplash.com/photo-1523217582562-09d0def993a6?q=80&w=1600&auto=format&fit=crop',
-  'https://images.unsplash.com/photo-1531259683007-016a7b628fc3?q=80&w=1600&auto=format&fit=crop'
+  '/lovable-uploads/f41f0c40-2fba-4def-9390-a80b7f3ba58b.png'
 ];
 
 const Gallery = () => {
