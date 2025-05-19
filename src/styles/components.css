@@ -77,7 +77,7 @@
   }
 
   .gallery-card {
-    @apply overflow-hidden rounded-xl cursor-pointer group bg-gray-100 relative;
+    @apply overflow-hidden rounded-xl cursor-pointer bg-gray-100 relative;
   }
   
   .gallery-filter-btn {
