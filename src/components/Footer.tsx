@@ -8,12 +8,13 @@ const Footer = () => {
   const { contact, booking } = propertyData;
 
   return (
-    <footer className="bg-gray-900 text-white pt-16 pb-8" id="contact">
-      <div className="container mx-auto px-4 max-w-6xl">
+    <footer className="bg-gray-900 text-white pt-16 pb-8 relative" id="contact">
+      <div className="absolute inset-0 bg-[url('/lovable-uploads/b54e2e66-40fc-40f2-9a7c-17506864c107.png')] bg-cover bg-center opacity-10"></div>
+      <div className="container mx-auto px-4 max-w-6xl relative z-10">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
-          <div>
-            <h3 className="text-xl font-semibold mb-4">Stone House in Olive Grove</h3>
-            <p className="text-gray-400 mb-4">
+          <div className="glass-effect-dark p-6 rounded-xl">
+            <h3 className="text-2xl font-playfair font-semibold mb-4">Stone House in Olive Grove</h3>
+            <p className="text-gray-300 mb-4">
               {t(
                 "Experience the beauty of Kefalonia in our traditional stone villa with modern comforts and breathtaking sea views.", 
                 "Ζήστε την ομορφιά της Κεφαλονιάς στην παραδοσιακή πέτρινη βίλα μας με σύγχρονες ανέσεις και εκπληκτική θέα στη θάλασσα."
@@ -33,26 +34,26 @@ const Footer = () => {
             </div>
           </div>
           
-          <div>
-            <h3 className="text-xl font-semibold mb-4">{t("Quick Links", "Γρήγοροι Σύνδεσμοι")}</h3>
-            <ul className="space-y-2">
+          <div className="glass-effect-dark p-6 rounded-xl">
+            <h3 className="text-2xl font-playfair font-semibold mb-4">{t("Quick Links", "Γρήγοροι Σύνδεσμοι")}</h3>
+            <ul className="space-y-3">
               <li>
-                <a href="#" className="text-gray-400 hover:text-white transition-colors">
+                <a href="#" className="text-gray-300 hover:text-white transition-colors">
                   {t("Home", "Αρχική")}
                 </a>
               </li>
               <li>
-                <a href="#gallery" className="text-gray-400 hover:text-white transition-colors">
+                <a href="#gallery" className="text-gray-300 hover:text-white transition-colors">
                   {t("Gallery", "Γκαλερί")}
                 </a>
               </li>
               <li>
-                <a href="#details" className="text-gray-400 hover:text-white transition-colors">
+                <a href="#details" className="text-gray-300 hover:text-white transition-colors">
                   {t("Details", "Λεπτομέρειες")}
                 </a>
               </li>
               <li>
-                <a href="#reviews" className="text-gray-400 hover:text-white transition-colors">
+                <a href="#reviews" className="text-gray-300 hover:text-white transition-colors">
                   {t("Reviews", "Κριτικές")}
                 </a>
               </li>
@@ -61,7 +62,7 @@ const Footer = () => {
                   href={language === 'en' ? booking.links.en : booking.links.el} 
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-gray-400 hover:text-white transition-colors"
+                  className="text-gray-300 hover:text-white transition-colors"
                 >
                   {t("Book Now", "Κράτηση Τώρα")}
                 </a>
@@ -69,33 +70,33 @@ const Footer = () => {
             </ul>
           </div>
           
-          <div>
-            <h3 className="text-xl font-semibold mb-4">{t("Contact Us", "Επικοινωνήστε μαζί μας")}</h3>
+          <div className="glass-effect-dark p-6 rounded-xl">
+            <h3 className="text-2xl font-playfair font-semibold mb-4">{t("Contact Us", "Επικοινωνήστε μαζί μας")}</h3>
             <ul className="space-y-4">
               <li className="flex">
                 <MapPin className="text-villa-blue w-5 h-5 mr-3 flex-shrink-0" />
-                <span className="text-gray-400">
+                <span className="text-gray-300">
                   {t(contact.address.en, contact.address.el)}
                 </span>
               </li>
               <li className="flex">
                 <Phone className="text-villa-blue w-5 h-5 mr-3 flex-shrink-0" />
-                <a href={`tel:${contact.phone}`} className="text-gray-400 hover:text-white transition-colors">
+                <a href={`tel:${contact.phone}`} className="text-gray-300 hover:text-white transition-colors">
                   {contact.phone}
                 </a>
               </li>
               <li className="flex">
                 <Mail className="text-villa-blue w-5 h-5 mr-3 flex-shrink-0" />
-                <a href={`mailto:${contact.email}`} className="text-gray-400 hover:text-white transition-colors">
+                <a href={`mailto:${contact.email}`} className="text-gray-300 hover:text-white transition-colors">
                   {contact.email}
                 </a>
               </li>
             </ul>
           </div>
           
-          <div>
-            <h3 className="text-xl font-semibold mb-4">{t("Book Your Stay", "Κάντε Κράτηση")}</h3>
-            <p className="text-gray-400 mb-4">
+          <div className="glass-effect-dark p-6 rounded-xl">
+            <h3 className="text-2xl font-playfair font-semibold mb-4">{t("Book Your Stay", "Κάντε Κράτηση")}</h3>
+            <p className="text-gray-300 mb-4">
               {t(
                 "Book directly through Booking.com for the best rates and availability.", 
                 "Κάντε κράτηση απευθείας μέσω του Booking.com για τις καλύτερες τιμές και διαθεσιμότητα."

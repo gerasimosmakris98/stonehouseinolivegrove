@@ -1,5 +1,5 @@
 
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Poppins:wght@300;400;500;600;700&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -75,7 +75,19 @@
   }
 
   body {
-    @apply bg-background text-foreground font-['Poppins',sans-serif] antialiased;
+    @apply bg-background text-foreground font-poppins antialiased;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-playfair;
+  }
+
+  .glass-effect {
+    @apply bg-white/70 backdrop-blur-md border border-white/20 shadow-sm;
+  }
+
+  .glass-effect-dark {
+    @apply bg-gray-900/70 backdrop-blur-md border border-gray-700/20 shadow-sm;
   }
 
   .animated-section {
@@ -96,5 +108,44 @@
 
   .overlay-gradient {
     @apply bg-gradient-to-t from-black/60 to-transparent;
+  }
+}
+
+/* Gallery specific styles */
+@layer components {
+  .gallery-grid {
+    @apply grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4;
+  }
+
+  .gallery-item {
+    @apply overflow-hidden rounded-xl aspect-square cursor-pointer group bg-gray-100 relative;
+  }
+
+  .gallery-image {
+    @apply w-full h-full object-cover transition-transform duration-500 group-hover:scale-110;
+  }
+
+  .gallery-modal {
+    @apply fixed inset-0 bg-black/90 z-50 flex items-center justify-center p-4;
+  }
+
+  .gallery-modal-image {
+    @apply max-h-[85vh] max-w-[85vw] object-contain animate-fade-in rounded-lg;
+  }
+
+  .gallery-nav-button {
+    @apply absolute bg-black/50 hover:bg-black/70 text-white p-3 rounded-full z-50 transition-all duration-300 hover:scale-110;
+  }
+
+  .gallery-close-button {
+    @apply absolute top-4 right-4 text-white hover:text-gray-300 z-50 p-2 rounded-full bg-black/30 hover:bg-black/50 transition-all;
+  }
+
+  .gallery-categories {
+    @apply flex flex-wrap justify-center gap-2 mb-8;
+  }
+
+  .gallery-category-button {
+    @apply px-4 py-2 rounded-full text-sm font-medium transition-colors duration-300;
   }
 }
