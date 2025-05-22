@@ -42,10 +42,9 @@ const GalleryCategories = ({
                 key={category.id}
                 value={category.id}
                 className={`flex-1 relative px-4 py-3 text-sm md:text-base rounded-lg transition-all
-                  focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-villa-blue focus-visible:ring-offset-2 dark:focus-visible:ring-offset-background-dark
                   ${activeCategory === category.id 
                     ? 'bg-villa-blue text-white shadow-md' 
-                    : 'bg-gray-100/70 hover:bg-gray-200/80 text-gray-700 dark:bg-gray-700/70 dark:hover:bg-gray-600/80 dark:text-gray-200'
+                    : 'bg-gray-100/70 hover:bg-gray-200/80 text-gray-700'
                   }`}
               >
                 <span className="block">

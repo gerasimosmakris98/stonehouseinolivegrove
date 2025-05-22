@@ -3,7 +3,6 @@ import { useGallery } from './GalleryContext';
 import GalleryGrid from './GalleryGrid';
 import GalleryModal from './GalleryModal';
 import GalleryPreloader from './GalleryPreloader';
-import GalleryFilters from './GalleryFilters'; // Import GalleryFilters
 import GlassCard from '../GlassCard';
 import { useLanguage } from '../LanguageContext';
 
@@ -12,7 +11,8 @@ const GalleryContainer = () => {
     t
   } = useLanguage();
   const {
-    loading
+    loading,
+    imagesLoaded
   } = useGallery();
   
   return <section id="gallery" className="py-16 px-4 md:py-24 animated-section">
@@ -27,12 +27,10 @@ const GalleryContainer = () => {
             </p>
           </div>
         </div>
-
-        <GalleryFilters className="mb-8 md:mb-10" />
         
+        {/* Gallery content - Categories removed */}
         <GlassCard variant="default" className="mb-10">
-          {/* The loading state from context is now accurately managed for preloading imagesToDisplay */}
-          {loading ? <GalleryPreloader /> : <GalleryGrid />}
+          {loading && !imagesLoaded ? <GalleryPreloader /> : <GalleryGrid />}
         </GlassCard>
         
         <GalleryModal />

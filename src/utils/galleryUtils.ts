@@ -1,6 +1,18 @@
 
 import { GalleryImage, GalleryCategory } from '../types/gallery';
 
+// Remove duplicate images
+export const deduplicateImages = (images: GalleryImage[]): GalleryImage[] => {
+  const seen = new Set();
+  return images.filter(img => {
+    if (seen.has(img.src)) {
+      return false;
+    }
+    seen.add(img.src);
+    return true;
+  });
+};
+
 // Filter images by category
 export const filterImagesByCategory = (
   images: GalleryImage[], 
@@ -36,4 +48,9 @@ export const countImagesByCategory = (
   category: GalleryCategory
 ): number => {
   return filterImagesByCategory(images, category).length;
+};
+
+// Animate on scroll helper
+export const animateOnScroll = (element: Element): void => {
+  element.classList.add('animate');
 };
