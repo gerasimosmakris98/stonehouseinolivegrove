@@ -1,29 +1,24 @@
+import { GalleryImage, GalleryCategory } from '../../../types/gallery'; // Ensure GalleryCategory is imported
+import { consolidatedImages } from './consolidatedGalleryImages';
+export { galleryCategories } from './galleryCategories'; // Keep this
 
-import { GalleryImage } from '../../../types/gallery';
-import { exteriorImages } from './galleryImagesExterior';
-import { interiorImages } from './galleryImagesInterior';
-import { viewImages } from './galleryImagesViews';
-import { sharedImages } from './galleryImagesShared';
-import { deduplicateImages } from '../../../utils/galleryUtils';
+// Export the consolidated and already deduplicated image list
+export const galleryImagesList: GalleryImage[] = consolidatedImages;
 
-// Re-export categories
-export { galleryCategories } from './galleryCategories';
-
-// Combine all image lists (before deduplication)
-const allImages: GalleryImage[] = [
-  ...exteriorImages,
-  ...interiorImages,
-  ...viewImages,
-  ...sharedImages
-];
-
-// Export deduplicated image list
-export const galleryImagesList = deduplicateImages(allImages);
-
-// Export individual category lists for direct access
-export {
-  exteriorImages,
-  interiorImages,
-  viewImages,
-  sharedImages
-};
+// Re-create categorized exports from the single consolidated list
+// This ensures these exports are consistent with the single source of truth.
+export const exteriorImages: GalleryImage[] = consolidatedImages.filter(img => 
+    img.category === 'exterior' || (Array.isArray(img.category) && img.category.includes('exterior'))
+);
+export const interiorImages: GalleryImage[] = consolidatedImages.filter(img => 
+    img.category === 'interior' || (Array.isArray(img.category) && img.category.includes('interior'))
+);
+export const viewImages: GalleryImage[] = consolidatedImages.filter(img => 
+    img.category === 'views' || (Array.isArray(img.category) && img.category.includes('views'))
+);
+// For sharedImages, we can define them as images that have more than one category,
+// or list them if they were specifically in the old sharedImages and also in another (e.g. exterior and views)
+// For simplicity, let's assume shared images are those with an array for category.
+export const sharedImages: GalleryImage[] = consolidatedImages.filter(img => 
+    Array.isArray(img.category) && img.category.length > 0
+);
