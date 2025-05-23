@@ -37,7 +37,7 @@ export const useGallery = () => {
 };
 
 export const GalleryProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
-  const initialImageCount = 12; // Define initial image count
+  const initialImageCount = 10; // Define initial image count
 
   const [images] = useState<GalleryImage[]>(galleryImagesList);
   const [activeCategory, setActiveCategory] = useState<GalleryCategory>('all');

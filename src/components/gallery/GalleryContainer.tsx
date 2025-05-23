@@ -3,7 +3,7 @@ import { useGallery } from './GalleryContext';
 import GalleryGrid from './GalleryGrid';
 import GalleryModal from './GalleryModal';
 import GalleryPreloader from './GalleryPreloader';
-import GalleryFilters from './GalleryFilters'; // Import GalleryFilters
+// import GalleryFilters from './GalleryFilters'; // Import GalleryFilters - REMOVED
 import GlassCard from '../GlassCard';
 import { useLanguage } from '../LanguageContext';
 
@@ -28,7 +28,7 @@ const GalleryContainer = () => {
           </div>
         </div>
 
-        <GalleryFilters className="mb-8 md:mb-10" />
+        {/* <GalleryFilters className="mb-8 md:mb-10" /> - REMOVED */}
         
         <GlassCard variant="default" className="mb-10">
           {/* The loading state from context is now accurately managed for preloading imagesToDisplay */}

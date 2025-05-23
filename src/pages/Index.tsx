@@ -7,6 +7,7 @@ import PropertyOverview from '../components/PropertyOverview';
 import Gallery from '../components/Gallery';
 import DetailsFAQ from '../components/DetailsFAQ';
 import Reviews from '../components/Reviews';
+import ContactForm from '../components/ContactForm'; // Added import
 import Footer from '../components/Footer';
 
 const Index = () => {
@@ -82,6 +83,7 @@ const Index = () => {
         <Gallery />
         <DetailsFAQ />
         <Reviews />
+        <ContactForm /> {/* Added ContactForm component */}
         <Footer />
       </div>
     </LanguageProvider>

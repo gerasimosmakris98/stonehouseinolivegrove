@@ -44,7 +44,7 @@ const GalleryGrid = () => {
             className="px-8 py-3 border border-gray-300 rounded-md text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:border-gray-600 dark:hover:bg-gray-700 transition-colors duration-150
                        focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 dark:focus-visible:ring-offset-background-dark"
           >
-            {t('See all', 'Εμφάνιση όλων')}
+            {t('View All', 'Εμφάνιση όλων')}
           </button>
         </div>
       )}
