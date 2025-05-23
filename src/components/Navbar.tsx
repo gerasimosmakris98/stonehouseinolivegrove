@@ -88,7 +88,7 @@ const Navbar = () => {
                 {t('Reviews', 'Κριτικές')}
               </a>
               <a 
-                href="#contact" 
+                href="#contact-form" 
                 className={`text-sm font-medium px-3 py-2 rounded-full transition-all duration-300 ${
                   scrolled 
                     ? 'text-gray-700 hover:bg-gray-100/70' 
@@ -111,14 +111,14 @@ const Navbar = () => {
               </button>
               
               <a 
-                href={language === 'en' 
-                  ? 'https://www.booking.com/hotel/gr/denis-stone-villa-trapezaki.en-gb.html?lang=en-gb&soz=1&lang_changed=1' 
-                  : 'https://www.booking.com/hotel/gr/denis-stone-villa-trapezaki.el.html?lang=el&soz=1&lang_changed=1'}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="glass-button bg-villa-blue text-white text-sm font-medium px-6 py-2.5 rounded-full hover:bg-blue-600 transition-all shadow-sm hover:shadow-md"
+                href="#contact-form"
+                className={`text-sm font-medium px-3 py-2 rounded-full transition-all duration-300 ${
+                  scrolled 
+                    ? 'bg-villa-blue text-white hover:bg-villa-blue/90' 
+                    : 'bg-white/10 text-white hover:bg-white/20'
+                }`}
               >
-                {t('Book Now', 'Κράτηση')}
+                {t('Contact Us', 'Επικοινωνία')}
               </a>
             </div>
 
@@ -174,11 +174,18 @@ const Navbar = () => {
               {t('Reviews', 'Κριτικές')}
             </a>
             <a 
-              href="#contact" 
+              href="#contact-form" 
               className="text-gray-800 hover:text-villa-blue py-3 border-b border-gray-100 transition-colors"
               onClick={toggleMobileMenu}
             >
               {t('Contact', 'Επικοινωνία')}
+            </a>
+            <a 
+              href="#contact-form" 
+              className="text-gray-800 hover:text-villa-blue py-3 border-b border-gray-100 transition-colors"
+              onClick={toggleMobileMenu}
+            >
+              {t('Contact Us', 'Επικοινωνία')}
             </a>
 
             <div className="flex items-center justify-between pt-4">
@@ -188,18 +195,6 @@ const Navbar = () => {
               >
                 {language === 'en' ? 'EL' : 'EN'}
               </button>
-              
-              <a 
-                href={language === 'en' 
-                  ? 'https://www.booking.com/hotel/gr/denis-stone-villa-trapezaki.en-gb.html?lang=en-gb&soz=1&lang_changed=1' 
-                  : 'https://www.booking.com/hotel/gr/denis-stone-villa-trapezaki.el.html?lang=el&soz=1&lang_changed=1'}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="bg-villa-blue text-white text-sm font-medium px-4 py-2 rounded-lg"
-                onClick={toggleMobileMenu}
-              >
-                {t('Book Now', 'Κράτηση')}
-              </a>
             </div>
           </div>
         </div>
