@@ -29,11 +29,3 @@ export const getFeaturedImages = (images: GalleryImage[], limit = 5): GalleryIma
     .filter(img => img.featured)
     .slice(0, limit);
 };
-
-// Count images by category
-export const countImagesByCategory = (
-  images: GalleryImage[], 
-  category: GalleryCategory
-): number => {
-  return filterImagesByCategory(images, category).length;
-};

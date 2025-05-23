@@ -7,12 +7,12 @@ import { filterImagesByCategory } from '../../utils/galleryUtils';
 interface GalleryContextType {
   images: GalleryImage[];
   filteredImages: GalleryImage[];
-  activeCategory: GalleryCategory;
+  // activeCategory: GalleryCategory; // Removed
   selectedImage: string | null;
   currentIndex: number;
   imagesLoaded: number;
   loading: boolean;
-  setActiveCategory: (category: GalleryCategory) => void;
+  // setActiveCategory: (category: GalleryCategory) => void; // Removed
   openModal: (img: string, index: number) => void;
   closeModal: () => void;
   nextImage: () => void;
@@ -40,21 +40,18 @@ export const GalleryProvider: React.FC<{ children: React.ReactNode }> = ({ child
   const initialImageCount = 10; // Define initial image count
 
   const [images] = useState<GalleryImage[]>(galleryImagesList);
-  const [activeCategory, setActiveCategory] = useState<GalleryCategory>('all');
-  const [filteredImages, setFilteredImages] = useState<GalleryImage[]>(galleryImagesList);
+  // const [activeCategory, setActiveCategory] = useState<GalleryCategory>('all'); // Removed
+  const [filteredImages, setFilteredImages] = useState<GalleryImage[]>(images); // Initialize with full list from images state
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
   const [currentIndex, setCurrentIndex] = useState(0);
   const [imagesLoaded, setImagesLoaded] = useState(0);
   const [loading, setLoading] = useState(true); // Initialize to true
   const [showAllImages, setShowAllImages] = useState(false); // New state for showing all images
 
-  // Set filtered images when category changes
-  useEffect(() => {
-    const filtered = filterImagesByCategory(images, activeCategory);
-    setFilteredImages(filtered);
-    setShowAllImages(false); // Reset when category changes
-    // No need to set imagesLoaded or loading here, it will be handled by the imagesToDisplay useEffect
-  }, [activeCategory, images]);
+  // Removed useEffect that depended on activeCategory
+  // filteredImages is now initialized with `images` and does not change due to category.
+  // If setShowAllImages(false) was critical for some other reset logic,
+  // it might need to be re-evaluated. For now, it's removed as it was tied to category changes.
 
   // Function to set showAllImages to true
   const displayAllImages = () => {
@@ -133,12 +130,12 @@ export const GalleryProvider: React.FC<{ children: React.ReactNode }> = ({ child
       value={{
         images, 
         filteredImages, 
-        activeCategory,
+        // activeCategory, // Removed
         selectedImage,
         currentIndex,
         imagesLoaded, 
         loading, 
-        setActiveCategory,
+        // setActiveCategory, // Removed
         openModal,
         closeModal,
         nextImage,
